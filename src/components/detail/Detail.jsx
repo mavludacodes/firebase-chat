@@ -68,6 +68,7 @@ const Detail = () => {
             <img src="./arrowUp.png" alt="" />
           </div>
         </div>
+
         <button onClick={handleBlock}>
           {isCurrentUserBlocked
             ? "You are blocked!"
