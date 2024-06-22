@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 import "./chatList.css";
-import AddUser from "./addUser/AddUser";
 import useUserStore from "../../../lib/userStore";
 import { doc, getDoc, onSnapshot, updateDoc } from "firebase/firestore";
 import { db } from "../../../lib/firebase";
 import useChatStore from "../../../lib/chatStore";
+import AddMode from "./addMode/AddMode";
 
 const ChatList = () => {
   const [chats, setChats] = useState([]);
-  const [addMode, setAddMode] = useState(false);
   const [input, setInput] = useState("");
 
   const { currentUser } = useUserStore();
@@ -73,12 +72,7 @@ const ChatList = () => {
             onChange={(e) => setInput(e.target.value)}
           />
         </div>
-        <img
-          src={addMode ? "./minus.png" : "./plus.png"}
-          alt=""
-          className="add"
-          onClick={() => setAddMode((prev) => !prev)}
-        />
+        <AddMode />
       </div>
 
       {filteredChats.map((chat) => (
@@ -106,8 +100,6 @@ const ChatList = () => {
           </div>
         </div>
       ))}
-
-      {addMode && <AddUser />}
     </div>
   );
 };

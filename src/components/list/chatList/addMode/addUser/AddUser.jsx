@@ -9,11 +9,11 @@ import {
   doc,
   setDoc,
 } from "firebase/firestore";
-import { db } from "../../../../lib/firebase";
+import { db } from "../../../../../lib/firebase";
 import "./addUser.css";
 import { useState } from "react";
 
-import useUserStore from "../../../../lib/userStore";
+import useUserStore from "../../../../../lib/userStore";
 
 const AddUser = () => {
   const [user, setUser] = useState(null);
