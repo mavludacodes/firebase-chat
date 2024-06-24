@@ -12,6 +12,7 @@ body {
   align-items: center;
   height: 100vh;
   color: #fff;
+  position: relative;
 }
 
 .container {
@@ -29,4 +30,48 @@ body {
   font-size: 36px;
   border-radius: 10px;
   background-color: rgba(17, 25, 40, 0.9);
+}
+
+.image-preview {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  padding: 20px;
+  margin: auto;
+  background-color: rgba(17, 25, 40, 0.781);
+  width: max-content;
+  height: max-content;
+  border-radius: 10px;
+  img {
+    width: auto;
+    height: 250px;
+  }
+
+  .btns-container {
+    display: flex;
+    margin-top: 10px;
+    justify-content: flex-end;
+    gap: 10px;
+    button {
+      padding: 10px;
+      /* background-color: #1a73e8; */
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+
+      &:nth-child(1) {
+        background-color: rgba(230, 74, 105, 0.553);
+      }
+
+      &:nth-child(1):hover {
+        background-color: rgba(220, 20, 60, 0.796);
+      }
+      &:nth-child(2) {
+        background-color: #1a73e8;
+      }
+    }
+  }
 }
