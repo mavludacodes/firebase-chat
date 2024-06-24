@@ -10,18 +10,20 @@ import {
 import { db } from "../../../lib/firebase";
 import useChatStore from "../../../lib/chatStore";
 import useUserStore from "../../../lib/userStore";
+import "./messages.css";
 
 const Messages = () => {
   const [chats, setChats] = useState();
 
-  const endRef = useRef(null);
+  const bottomRef = useRef();
   const { currentUser } = useUserStore();
   const { chatId, user, isCurrentUserBlocked, isReceiverBlocked } =
     useChatStore();
 
   useEffect(() => {
-    endRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, []);
+    // endRef.current?.scrollIntoView({ behavior: "smooth" });
+    bottomRef.current.scrollTop = bottomRef.current.scrollHeight;
+  }, [chats]);
 
   useEffect(() => {
     const unSub = onSnapshot(doc(db, "chats", chatId), (res) => {
@@ -33,7 +35,7 @@ const Messages = () => {
     };
   }, []);
   return (
-    <>
+    <div className="messages" ref={bottomRef}>
       {chats?.messages.map((message) => (
         <div
           className={
@@ -44,20 +46,12 @@ const Messages = () => {
           <div className="texts">
             {message.img && <img src={message.img} alt="" />}
             {message.text && <p>{message.text}</p>}
-            {/* <span>1 min ago</span> */}
           </div>
         </div>
       ))}
 
-      {/* {img.url && (
-        <div className="message own">
-          <div className="texts">
-            <img src={img.url} alt="" />
-          </div>
-        </div>
-      )} */}
-      <div ref={endRef}></div>
-    </>
+      {/* <div ref={endRef}></div> */}
+    </div>
   );
 };
 

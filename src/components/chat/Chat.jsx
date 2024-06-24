@@ -23,9 +23,9 @@ const Chat = () => {
           <img src="./info.png" alt="" />
         </div>
       </div>
-      <div className="center">
-        <Messages />
-      </div>
+
+      <Messages />
+
       <div className="bottom">
         <SendMessage />
       </div>
