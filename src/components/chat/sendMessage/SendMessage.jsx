@@ -4,17 +4,12 @@ import useChatStore from "../../../lib/chatStore";
 import useUserStore from "../../../lib/userStore";
 import { doc, updateDoc, arrayUnion, getDoc } from "firebase/firestore";
 import { db } from "../../../lib/firebase";
-import upload from "../../../lib/upload";
 import SendImage from "../sendImage/SendImage";
 import "./sendMessage.css";
 
 const SendMessage = () => {
   const [open, setOpen] = useState(false);
   const [text, setText] = useState("");
-  const [img, setImg] = useState({
-    file: null,
-    url: "",
-  });
 
   const { currentUser } = useUserStore();
   const { chatId, user, isCurrentUserBlocked, isReceiverBlocked } =
@@ -25,32 +20,16 @@ const SendMessage = () => {
     setOpen(false);
   };
 
-  const handleImg = (e) => {
-    if (e.target.files[0]) {
-      setImg({
-        file: e.target.files[0],
-        url: URL.createObjectURL(e.target.files[0]),
-      });
-    }
-  };
-
   const handleSend = async (e) => {
     e.preventDefault();
     if (text === "") return;
 
-    let imgUrl = null;
-
     try {
-      if (img.file) {
-        imgUrl = await upload(img.file);
-      }
-
       await updateDoc(doc(db, "chats", chatId), {
         messages: arrayUnion({
           senderId: currentUser.id,
           text,
           createdAt: new Date(),
-          ...(imgUrl && { img: imgUrl }),
         }),
       });
 
@@ -74,29 +53,15 @@ const SendMessage = () => {
           await updateDoc(userChatsRef, { chats: userChatsData.chats });
         }
       });
+      setText("");
     } catch (err) {
       console.log(err);
     }
-
-    setImg({
-      file: null,
-      url: "",
-    });
-    setText("");
   };
 
   return (
     <div className="sendMessage">
       <div className="icons">
-        {/* <label htmlFor="file">
-          <img src="./img.png" alt="" />
-        </label>
-        <input
-          type="file"
-          id="file"
-          style={{ display: "none" }}
-          onChange={handleImg}
-        /> */}
         <SendImage />
         <img src="./camera.png" alt="" />
         <img src="./mic.png" alt="" />
