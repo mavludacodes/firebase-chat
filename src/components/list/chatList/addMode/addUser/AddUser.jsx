@@ -15,7 +15,7 @@ import { useState } from "react";
 
 import useUserStore from "../../../../../lib/userStore";
 
-const AddUser = () => {
+const AddUser = ({ setAddMode }) => {
   const [user, setUser] = useState(null);
   const { currentUser } = useUserStore();
   const handleSearch = async (e) => {
@@ -71,6 +71,9 @@ const AddUser = () => {
   };
   return (
     <div className="addUser">
+      <button className="close-btn" onClick={() => setAddMode(false)}>
+        <img src="./delete.png" alt="" />
+      </button>
       <form onSubmit={handleSearch}>
         <input type="text" placeholder="Username" name="username" />
         <button>Search</button>

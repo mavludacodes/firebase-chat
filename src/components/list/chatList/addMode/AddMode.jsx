@@ -12,7 +12,7 @@ const AddMode = () => {
         onClick={() => setAddMode((prev) => !prev)}
       />
 
-      {addMode && <AddUser />}
+      {addMode && <AddUser setAddMode={setAddMode} />}
     </>
   );
 };
