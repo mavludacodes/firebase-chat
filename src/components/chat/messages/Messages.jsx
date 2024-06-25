@@ -1,12 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-
-import {
-  onSnapshot,
-  doc,
-  updateDoc,
-  arrayUnion,
-  getDoc,
-} from "firebase/firestore";
+import { onSnapshot, doc } from "firebase/firestore";
 import { db } from "../../../lib/firebase";
 import useChatStore from "../../../lib/chatStore";
 import useUserStore from "../../../lib/userStore";
@@ -17,11 +10,9 @@ const Messages = () => {
 
   const bottomRef = useRef();
   const { currentUser } = useUserStore();
-  const { chatId, user, isCurrentUserBlocked, isReceiverBlocked } =
-    useChatStore();
+  const { chatId } = useChatStore();
 
   useEffect(() => {
-    // endRef.current?.scrollIntoView({ behavior: "smooth" });
     bottomRef.current.scrollTop = bottomRef.current.scrollHeight;
   }, [chats]);
 
@@ -33,7 +24,7 @@ const Messages = () => {
     return () => {
       unSub();
     };
-  }, []);
+  }, [chatId]);
   return (
     <div className="messages" ref={bottomRef}>
       {chats?.messages.map((message) => (
@@ -49,8 +40,6 @@ const Messages = () => {
           </div>
         </div>
       ))}
-
-      {/* <div ref={endRef}></div> */}
     </div>
   );
 };

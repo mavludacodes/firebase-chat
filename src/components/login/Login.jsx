@@ -14,7 +14,8 @@ const Login = () => {
     url: "",
   });
 
-  const [loading, setLoading] = useState(false);
+  const [loading1, setLoading1] = useState(false);
+  const [loading2, setLoading2] = useState(false);
 
   const handleAvatar = (e) => {
     if (e.target.files[0]) {
@@ -27,7 +28,7 @@ const Login = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    setLoading(true);
+    setLoading2(true);
     const formData = new FormData(e.target);
     const { username, email, password } = Object.fromEntries(formData);
 
@@ -51,13 +52,13 @@ const Login = () => {
       console.log(error);
       toast.error(error.message);
     } finally {
-      setLoading(false);
+      setLoading2(false);
     }
   };
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    setLoading(true);
+    setLoading1(true);
     const formData = new FormData(e.target);
     const { email, password } = Object.fromEntries(formData);
 
@@ -67,7 +68,7 @@ const Login = () => {
       console.log(error);
       toast.error(error);
     } finally {
-      setLoading(false);
+      setLoading1(false);
     }
   };
 
@@ -78,7 +79,9 @@ const Login = () => {
         <form onSubmit={handleLogin}>
           <input type="text" placeholder="Email" name="email" />
           <input type="password" placeholder="Password" name="password" />
-          <button disabled={loading}>{loading ? "Loading" : "Sign In"}</button>
+          <button disabled={loading1}>
+            {loading1 ? "Loading" : "Sign In"}
+          </button>
         </form>
       </div>
 
@@ -99,7 +102,9 @@ const Login = () => {
           <input type="text" placeholder="Username" name="username" />
           <input type="text" placeholder="Email" name="email" />
           <input type="password" placeholder="Password" name="password" />
-          <button disabled={loading}> {loading ? "Loading" : "Sign Up"}</button>
+          <button disabled={loading2}>
+            {loading2 ? "Loading" : "Sign Up"}
+          </button>
         </form>
       </div>
     </div>
