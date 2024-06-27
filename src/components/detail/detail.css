@@ -1,6 +1,5 @@
 .detail {
   flex: 1;
-
   .user {
     padding: 20px 20px;
     display: flex;
@@ -96,5 +95,13 @@
         background-color: #1a73e8;
       }
     }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .detail {
+    position: fixed;
+    right: -100vw;
+    top: 0;
   }
 }

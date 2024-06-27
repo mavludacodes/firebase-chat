@@ -6,22 +6,22 @@
 }
 
 body {
-  background-image: url("/bg.jpg");
+  height: 100vh;
   display: flex;
+  background-image: url("/bg.jpg");
   justify-content: center;
   align-items: center;
-  height: 100vh;
   color: #fff;
-  position: relative;
 }
 
 .container {
   width: 100vw;
   height: 100vh;
+  display: flex;
   background-color: rgba(17, 25, 40, 0.75);
   backdrop-filter: blur(19px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.125);
-  display: flex;
+  overflow-x: hidden;
 }
 
 .loading {
