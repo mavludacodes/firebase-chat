@@ -25,10 +25,7 @@ const Chat = () => {
       </div>
 
       <Messages />
-
-      <div className="bottom">
-        <SendMessage />
-      </div>
+      <SendMessage />
     </div>
   );
 };

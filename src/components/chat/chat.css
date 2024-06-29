@@ -1,5 +1,5 @@
 .chat {
-  flex: 1;
+  flex: 2;
   border-left: 1px solid #dddddd35;
   border-right: 1px solid #dddddd35;
   height: 100%;
@@ -51,18 +51,18 @@
       }
     }
   }
-
-  .bottom {
-    padding: 20px;
-    border-top: 1px solid #dddddd35;
-    margin-top: auto;
-  }
 }
 
 @media screen and (max-width: 576px) {
-  .chat {
+  /* .chat {
     position: fixed;
     right: -100vw;
+    top: 0;
+    width: 100%;
+  } */
+  .chat {
+    position: fixed;
+    left: 0;
     top: 0;
     width: 100%;
   }
