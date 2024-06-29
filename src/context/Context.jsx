@@ -9,7 +9,7 @@ const MobileProvider = ({ children, breakpoint = 576 }) => {
     const handleResize = () => {
       if (window.innerWidth < breakpoint) {
         setIsMobile(true);
-        console.log("hii");
+        console.log(window.innerWidth);
       } else {
         setIsMobile(false);
       }
@@ -32,4 +32,8 @@ const MobileProvider = ({ children, breakpoint = 576 }) => {
   );
 };
 
-export { MobileProvider };
+const useMobile = () => {
+  return useContext(MobileContext);
+};
+
+export { MobileProvider, useMobile };

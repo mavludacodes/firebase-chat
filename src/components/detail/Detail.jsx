@@ -3,12 +3,24 @@ import "./detail.css";
 import useChatStore from "../../lib/chatStore";
 import useUserStore from "../../lib/userStore";
 import { arrayRemove, arrayUnion, doc, updateDoc } from "firebase/firestore";
+import { useMobile } from "../../context/Context";
+import { useEffect, useRef } from "react";
 
 const Detail = () => {
+  const isMobile = useMobile();
+  const detailRef = useRef(null);
   const { chatId, user, isCurrentUserBlocked, isReceiverBlocked, changeBlock } =
     useChatStore();
 
   const { currentUser } = useUserStore();
+
+  useEffect(() => {
+    if (isMobile && detailRef.current) {
+      detailRef.current.classList.add("isMobile-detail");
+    } else {
+      detailRef.current.classList.remove("isMobile-detail");
+    }
+  }, [isMobile]);
 
   const handleBlock = async (e) => {
     e.preventDefault();
@@ -27,7 +39,7 @@ const Detail = () => {
   };
 
   return (
-    <div className="detail">
+    <div className="detail" ref={detailRef}>
       <div className="user">
         <img src={user?.avatar || "./avatar.png"} alt="" />
         <h2>{user?.username}</h2>

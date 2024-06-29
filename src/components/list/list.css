@@ -5,16 +5,10 @@
 }
 
 @media screen and (max-width: 576px) {
-  /* .chat {
-    position: fixed;
-    right: -100vw;
-    top: 0;
-    width: 100%;
-  } */
-  .list {
+  /* .list {
     position: fixed;
     left: -100vw;
     top: 0;
     width: 100%;
-  }
+  } */
 }

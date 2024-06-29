@@ -2,12 +2,25 @@ import "./chat.css";
 import useChatStore from "../../lib/chatStore";
 import Messages from "./messages/Messages";
 import SendMessage from "./sendMessage/SendMessage";
+import { useEffect, useRef } from "react";
+import { useMobile } from "../../context/Context";
 
 const Chat = () => {
+  const isMobile = useMobile();
   const { user } = useChatStore();
 
+  const chatRef = useRef(null);
+
+  useEffect(() => {
+    if (isMobile && chatRef.current) {
+      chatRef.current.classList.add("isMobile-chat");
+    } else {
+      chatRef.current.classList.remove("isMobile-chat");
+    }
+  }, [isMobile]);
+
   return (
-    <div className="chat">
+    <div className="chat" ref={chatRef}>
       <div className="top">
         <div className="user">
           <img src={user?.avatar || "./avatar.png"} alt="" />

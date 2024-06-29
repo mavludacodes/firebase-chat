@@ -99,9 +99,16 @@
 }
 
 @media screen and (max-width: 576px) {
-  .detail {
+  .isMobile-detail {
     position: fixed;
     right: -100vw;
     top: 0;
+    width: 100%;
+  }
+  .show-detail {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
   }
 }

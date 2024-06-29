@@ -54,13 +54,13 @@
 }
 
 @media screen and (max-width: 576px) {
-  /* .chat {
+  .isMobile-chat {
     position: fixed;
     right: -100vw;
     top: 0;
     width: 100%;
-  } */
-  .chat {
+  }
+  .show-chat {
     position: fixed;
     left: 0;
     top: 0;
