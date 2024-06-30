@@ -7,7 +7,7 @@ import { useMobile } from "../../context/Context";
 import { useEffect, useRef } from "react";
 
 const Detail = () => {
-  const isMobile = useMobile();
+  const { value, setValue } = useMobile();
   const detailRef = useRef(null);
   const { chatId, user, isCurrentUserBlocked, isReceiverBlocked, changeBlock } =
     useChatStore();
@@ -15,12 +15,19 @@ const Detail = () => {
   const { currentUser } = useUserStore();
 
   useEffect(() => {
-    if (isMobile && detailRef.current) {
+    if (value.isMobile < 576 && detailRef.current) {
       detailRef.current.classList.add("isMobile-detail");
     } else {
       detailRef.current.classList.remove("isMobile-detail");
     }
-  }, [isMobile]);
+  }, [value]);
+
+  useEffect(() => {
+    setValue((prev) => ({
+      ...prev,
+      detailRef,
+    }));
+  }, []);
 
   const handleBlock = async (e) => {
     e.preventDefault();

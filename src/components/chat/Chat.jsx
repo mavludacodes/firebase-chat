@@ -6,18 +6,27 @@ import { useEffect, useRef } from "react";
 import { useMobile } from "../../context/Context";
 
 const Chat = () => {
-  const isMobile = useMobile();
+  const { value, setValue } = useMobile();
+
+  console.log(value);
   const { user } = useChatStore();
 
   const chatRef = useRef(null);
 
   useEffect(() => {
-    if (isMobile && chatRef.current) {
+    if (value.isMobile < 576 && chatRef.current) {
       chatRef.current.classList.add("isMobile-chat");
     } else {
       chatRef.current.classList.remove("isMobile-chat");
     }
-  }, [isMobile]);
+  }, [value]);
+
+  useEffect(() => {
+    setValue((prev) => ({
+      ...prev,
+      chatRef,
+    }));
+  }, []);
 
   return (
     <div className="chat" ref={chatRef}>
@@ -37,7 +46,7 @@ const Chat = () => {
         </div>
       </div>
 
-      <Messages />
+      {/* <Messages /> */}
       <SendMessage />
     </div>
   );

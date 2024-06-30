@@ -34,8 +34,8 @@ const App = () => {
           {currentUser ? (
             <>
               <List />
-              {chatId && <Chat />}
-              {chatId && <Detail />}
+              <Chat />
+              {/* <Detail /> */}
             </>
           ) : (
             <Login />

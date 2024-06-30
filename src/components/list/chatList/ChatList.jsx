@@ -5,8 +5,11 @@ import { doc, getDoc, onSnapshot, updateDoc } from "firebase/firestore";
 import { db } from "../../../lib/firebase";
 import useChatStore from "../../../lib/chatStore";
 import AddMode from "./addMode/AddMode";
+import { useMobile } from "../../../context/Context";
 
 const ChatList = () => {
+  const { value } = useMobile();
+
   const [chats, setChats] = useState([]);
   const [input, setInput] = useState("");
 
@@ -37,6 +40,14 @@ const ChatList = () => {
   }, [currentUser.id]);
 
   const handleSelect = async (chat) => {
+    if (value.isMobile < 576) {
+      value.chatRef.current?.classList.add("show-chat");
+      value.listRef.current?.classList.add("remove-list");
+    } else {
+      value.chatRef.current?.classList.remove("show-chat");
+      value.listRef.current?.classList.remove("remove-list");
+    }
+
     const userChats = chats.map((item) => {
       const { user, ...rest } = item;
       return rest;

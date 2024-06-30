@@ -2,20 +2,21 @@ import "./list.css";
 import ChatList from "./chatList/ChatList";
 import UserInfo from "./userInfo/UserInfo";
 import { useMobile } from "../../context/Context";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 
 const List = () => {
-  const isMobile = useMobile();
-  const ref = useRef(null);
+  const { value, setValue } = useMobile();
+  const listRef = useRef(null);
 
-  // if (isMobile && ref.current) {
-  //   ref.current.style.backgroundColor = "lightblue";
-  // } else {
-  //   ref.current.style.backgroundColor = "red";
-  // }
+  useEffect(() => {
+    setValue((prev) => ({
+      ...prev,
+      listRef,
+    }));
+  }, []);
 
   return (
-    <div className="list" ref={ref}>
+    <div className="list" ref={listRef}>
       <UserInfo />
       <ChatList />
     </div>

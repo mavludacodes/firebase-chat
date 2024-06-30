@@ -3,16 +3,15 @@ import { createContext, useState, useEffect, useContext } from "react";
 const MobileContext = createContext();
 
 const MobileProvider = ({ children, breakpoint = 576 }) => {
-  const [isMobile, setIsMobile] = useState(false);
+  const [value, setValue] = useState({
+    isMobile: null,
+    chatRef: null,
+    detailRef: null,
+  });
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < breakpoint) {
-        setIsMobile(true);
-        console.log(window.innerWidth);
-      } else {
-        setIsMobile(false);
-      }
+      setValue((prev) => ({ ...prev, isMobile: window.innerWidth }));
     };
 
     // Initial check
@@ -28,7 +27,9 @@ const MobileProvider = ({ children, breakpoint = 576 }) => {
   }, [breakpoint]);
 
   return (
-    <MobileContext.Provider value={isMobile}>{children}</MobileContext.Provider>
+    <MobileContext.Provider value={{ value, setValue }}>
+      {children}
+    </MobileContext.Provider>
   );
 };
 

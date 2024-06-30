@@ -5,10 +5,10 @@
 }
 
 @media screen and (max-width: 576px) {
-  /* .list {
+  .remove-list {
     position: fixed;
     left: -100vw;
     top: 0;
     width: 100%;
-  } */
+  }
 }
