@@ -2,13 +2,17 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+  transition: left 0.5s ease;
 }
 
 @media screen and (max-width: 576px) {
-  .remove-list {
+  .list {
     position: fixed;
-    left: -100vw;
     top: 0;
     width: 100%;
+    left: 0;
+  }
+  .remove-list {
+    left: -100vw;
   }
 }

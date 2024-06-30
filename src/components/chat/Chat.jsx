@@ -27,12 +27,23 @@ const Chat = () => {
     }));
   }, []);
 
+  const goBack = (e) => {
+    e.preventDefault();
+    value.chatRef.current?.classList.remove("show-chat");
+    value.listRef.current?.classList.remove("remove-list");
+  };
+
   return (
     <div className="chat" ref={chatRef}>
       {chatId ? (
         <>
           <div className="top">
             <div className="user">
+              {value.isMobile < 576 && (
+                <button className="go-back" onClick={goBack}>
+                  &larr;
+                </button>
+              )}
               <img src={user?.avatar || "./avatar.png"} alt="" />
 
               <div className="texts">

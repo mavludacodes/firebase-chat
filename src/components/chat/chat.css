@@ -5,6 +5,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  transition: right 0.5s ease;
 
   .load-chat {
     text-align: center;
@@ -23,6 +24,13 @@
       align-items: center;
       gap: 20px;
 
+      .go-back {
+        background-color: transparent;
+        font-size: 42px;
+        border: none;
+        color: #fff;
+        cursor: pointer;
+      }
       img {
         width: 50px;
         height: 50px;
@@ -67,7 +75,7 @@
   }
   .show-chat {
     position: fixed;
-    left: 0;
+    right: 0;
     top: 0;
     width: 100%;
   }
