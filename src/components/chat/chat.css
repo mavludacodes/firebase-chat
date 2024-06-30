@@ -56,8 +56,16 @@
     }
     .icons {
       display: flex;
+      align-items: center;
       gap: 20px;
 
+      .open-detail {
+        background-color: transparent;
+        border: none;
+        color: white;
+        cursor: pointer;
+        font-size: 28px;
+      }
       img {
         width: 20px;
         height: 20px;

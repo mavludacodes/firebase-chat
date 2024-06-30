@@ -15,7 +15,7 @@ const Detail = () => {
   const { currentUser } = useUserStore();
 
   useEffect(() => {
-    if (value.isMobile < 576 && detailRef.current) {
+    if (value.isMobile < 1030 && detailRef.current) {
       detailRef.current.classList.add("isMobile-detail");
     } else {
       detailRef.current.classList.remove("isMobile-detail");
@@ -44,6 +44,19 @@ const Detail = () => {
       console.log(err);
     }
   };
+
+  useEffect(() => {
+    const handleClick = () => {
+      console.log("hhoo");
+      value.detailRef?.current?.classList.remove("show-detail");
+    };
+    handleClick();
+    window.addEventListener("click", handleClick);
+
+    return () => {
+      window.removeEventListener("click", handleClick);
+    };
+  }, [value]);
 
   return (
     <div className="detail" ref={detailRef}>

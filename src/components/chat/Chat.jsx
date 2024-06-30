@@ -33,6 +33,12 @@ const Chat = () => {
     value.listRef.current?.classList.remove("remove-list");
   };
 
+  const openDetail = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    value.detailRef.current?.classList.add("show-detail");
+  };
+
   return (
     <div className="chat" ref={chatRef}>
       {chatId ? (
@@ -55,6 +61,11 @@ const Chat = () => {
               <img src="./phone.png" alt="" />
               <img src="./video.png" alt="" />
               <img src="./info.png" alt="" />
+              {value.isMobile < 1030 && (
+                <button className="open-detail" onClick={openDetail}>
+                  &#10247;
+                </button>
+              )}
             </div>
           </div>
 

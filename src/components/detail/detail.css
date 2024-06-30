@@ -1,5 +1,6 @@
 .detail {
   flex: 1;
+  transition: right 0.5s ease;
   .user {
     padding: 20px 20px;
     display: flex;
@@ -98,17 +99,15 @@
   }
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 1030px) {
   .isMobile-detail {
     position: fixed;
     right: -100vw;
     top: 0;
-    width: 100%;
+    bottom: 0;
+    background-color: rgb(17, 33, 62);
   }
   .show-detail {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
+    right: 0;
   }
 }
