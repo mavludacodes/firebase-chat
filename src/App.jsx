@@ -35,7 +35,7 @@ const App = () => {
             <>
               <List />
               <Chat />
-              {/* <Detail /> */}
+              <Detail />
             </>
           ) : (
             <Login />

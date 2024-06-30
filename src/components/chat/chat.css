@@ -6,6 +6,11 @@
   display: flex;
   flex-direction: column;
 
+  .load-chat {
+    text-align: center;
+    margin: auto 0;
+  }
+
   .top {
     padding: 20px;
     display: flex;
