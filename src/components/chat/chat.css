@@ -74,6 +74,9 @@
   }
 }
 
+@media screen and (max-width: 794px) {
+}
+
 @media screen and (max-width: 576px) {
   .isMobile-chat {
     position: fixed;

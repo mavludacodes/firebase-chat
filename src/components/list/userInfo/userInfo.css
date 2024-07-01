@@ -29,3 +29,14 @@
     }
   }
 }
+
+@media screen and (max-width: 794px) {
+  .userInfo {
+    .icons {
+      img:nth-child(2),
+      img:nth-child(3) {
+        display: none;
+      }
+    }
+  }
+}

@@ -53,14 +53,15 @@ const Chat = () => {
               <img src={user?.avatar || "./avatar.png"} alt="" />
 
               <div className="texts">
-                <span>{user?.username}</span>
-                <p>Lorem ipsum dolor, sit amet.</p>
+                {value.isMobile > 400 && <span>{user?.username}</span>}
+                {value.isMobile > 460 && <p>Lorem ipsum dolor, sit amet.</p>}
               </div>
             </div>
             <div className="icons">
               <img src="./phone.png" alt="" />
               <img src="./video.png" alt="" />
               <img src="./info.png" alt="" />
+
               {value.isMobile < 1030 && (
                 <button className="open-detail" onClick={openDetail}>
                   &#10247;

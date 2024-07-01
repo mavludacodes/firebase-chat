@@ -81,3 +81,13 @@
     }
   }
 }
+
+@media screen and (max-width: 794px) {
+  .chatList {
+    .search {
+      .searchBar {
+        width: 160px;
+      }
+    }
+  }
+}

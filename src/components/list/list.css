@@ -5,6 +5,12 @@
   transition: left 0.5s ease;
 }
 
+@media screen and (max-width: 794px) {
+  .list {
+    max-width: 250px;
+  }
+}
+
 @media screen and (max-width: 576px) {
   .list {
     position: fixed;
