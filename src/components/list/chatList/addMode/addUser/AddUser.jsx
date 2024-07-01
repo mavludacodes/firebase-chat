@@ -65,14 +65,16 @@ const AddUser = ({ setAddMode }) => {
           updatedAt: Date.now(),
         }),
       });
+      setAddMode(false);
     } catch (error) {
       console.log(error);
     }
   };
+
   return (
     <div className="addUser">
-      <button className="close-btn" onClick={() => setAddMode(false)}>
-        <img src="./delete.png" alt="" />
+      <button className="close__btn" onClick={() => setAddMode(false)}>
+        &#x2715;
       </button>
       <form onSubmit={handleSearch}>
         <input type="text" placeholder="Username" name="username" />

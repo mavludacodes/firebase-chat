@@ -58,6 +58,12 @@ const Detail = () => {
     };
   }, [value]);
 
+  const logOut = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    auth.signOut();
+  };
+
   return (
     <div className="detail" ref={detailRef}>
       {chatId && (
@@ -110,7 +116,7 @@ const Detail = () => {
                 ? "User blocked"
                 : "Block User"}
             </button>
-            <button className="logout" onClick={() => auth.signOut()}>
+            <button className="logout" onClick={logOut}>
               Log out
             </button>
           </div>
