@@ -6,10 +6,11 @@ import useUserStore from "./userStore";
 const useChatStore = create((set) => ({
   chatId: null,
   user: null,
-  isCurrentUserBlocked: null,
-  isReceiverBlocked: null,
+  isCurrentUserBlocked: false,
+  isReceiverBlocked: false,
   changeChat: (chatId, user) => {
     const currentUser = useUserStore.getState().currentUser;
+    console.log(currentUser, "jjjkkk");
     if (user.blocked.includes(currentUser.id)) {
       return set({
         chatId,
@@ -19,7 +20,7 @@ const useChatStore = create((set) => ({
       });
     }
 
-    if (user.blocked.includes(user.id)) {
+    if (currentUser.blocked.includes(user.id)) {
       return set({
         chatId,
         user: user,

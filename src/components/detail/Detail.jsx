@@ -13,6 +13,7 @@ const Detail = () => {
     useChatStore();
 
   const { currentUser } = useUserStore();
+  console.log(isReceiverBlocked);
 
   useEffect(() => {
     if (value.isMobile < 1030 && detailRef.current) {
