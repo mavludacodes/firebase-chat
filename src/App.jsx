@@ -8,7 +8,6 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./lib/firebase";
 import useUserStore from "./lib/userStore";
 import useChatStore from "./lib/chatStore";
-// import IsMobile from "./components/isMobile/IsMobile";
 import { MobileProvider } from "./context/Context";
 
 const App = () => {

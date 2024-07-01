@@ -8,15 +8,19 @@ import {
 import { auth, db } from "../../lib/firebase";
 import { doc, setDoc } from "firebase/firestore";
 import upload from "../../lib/upload";
+import useUserStore from "../../lib/userStore";
+
 const Login = () => {
   const [avatar, setAvatar] = useState({
     file: null,
     url: "",
   });
 
-  const [haveAccount, setHaveAccount] = useState(false);
+  const [haveAccount, setHaveAccount] = useState(true);
   const [loading1, setLoading1] = useState(false);
   const [loading2, setLoading2] = useState(false);
+
+  const { fetchUserInfo } = useUserStore();
 
   const handleAvatar = (e) => {
     if (e.target.files[0]) {
@@ -49,6 +53,7 @@ const Login = () => {
         chats: [],
       });
       toast.success("Account created! You can login now!");
+      setHaveAccount(true);
     } catch (error) {
       console.log(error);
       toast.error(error.message);
@@ -64,7 +69,8 @@ const Login = () => {
     const { email, password } = Object.fromEntries(formData);
 
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      const res = await signInWithEmailAndPassword(auth, email, password);
+      fetchUserInfo(res.user.uid);
     } catch (error) {
       console.log(error);
       toast.error(error);
